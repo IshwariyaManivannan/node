@@ -10,6 +10,7 @@ const port = 3000;
 app.use(express.json());
 app.use(bodyParser.json())
 const accessTokenSecret = 'youraccesstokensecret';
+
 let mysql = require("mysql");
 
 
@@ -153,7 +154,7 @@ app.post("/login", (req, res) => {
     } else {
       const accessToken=jwt.sign({email:mail},accessTokenSecret)
       console.log(accessToken)
-      res.send({ message: "Logged in" }); 
+      res.send({ message: "Logged in",token:accessToken }); 
       // res.json({token:accessToken})
     }
   });
